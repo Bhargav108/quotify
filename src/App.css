@@ -147,6 +147,10 @@
   font-family: Redressed;
 }
 
+.loading-text {
+  width: 90%;
+}
+
 .quote-section {
   display: flex;
   justify-content: center;

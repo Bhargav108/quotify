@@ -14,7 +14,7 @@ function App() {
   async function getCategories() {
     try {
       setLoading(true);
-      const response = await fetch(`${REACT_APP_QUOTE_API}/v3/genres`);
+      const response = await fetch(`${REACT_APP_QUOTE_API}/genres`);
       const jsonResponse = await response.json();
       setGenres(['select a category',...jsonResponse.data]);
     } finally {
@@ -47,6 +47,10 @@ function App() {
   useEffect(()=> {
     getCategories();
     getRandomeQuotes();
+    return (()=> {
+      setCategory('')
+    });
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -54,7 +58,7 @@ function App() {
       <div className='header'>
         <span>Quotify</span>
       </div>
-      { loading ? <div className="loading">Loading random quotes ...</div> :
+      { loading ? <div className="loading"><span className='loading-text'>Loading random quotes ...</span></div> :
         <div className="quote-section">
           {
             genres.length ?
@@ -68,13 +72,13 @@ function App() {
           }
           <span className='sub-header'>{category ? category : 'Random'} Quotes</span>
           {
-            quoteLoading ? <div className="loading">Loading {category} quotes ...</div> :
+            quoteLoading ? <div className="loading"><span className='loading-text'>Loading {category} quotes ...</span></div> :
             quote.length ?
             <div className='quote-container'>
               {/* <span>{quote.message}</span> */}
               <div className='quote'>{quote[0].quoteText}</div>
               <span className='author'> ~ {quote[0].quoteAuthor} ~</span>
-              <button className='button' onClick={() => getRandomeQuotes(category.toLowerCase())}>Another</button>
+              <button className='button' onClick={() => getRandomeQuotes(category === 'Random' ? '' : category.toLowerCase())}>Another</button>
             </div> : ''
           }
         </div>
