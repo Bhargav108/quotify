@@ -135,6 +135,7 @@
   font-family: Redressed;
   font-size: large;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .loading {
