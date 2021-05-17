@@ -78,9 +78,10 @@ function App() {
               {/* <span>{quote.message}</span> */}
               <div className='quote'>{quote[0].quoteText}</div>
               <span className='author'> ~ {quote[0].quoteAuthor} ~</span>
-              <button className='button' onClick={() => getRandomeQuotes(category === 'Random' ? '' : category.toLowerCase())}>Another</button>
             </div> : ''
           }
+
+<button className='button' onClick={() => getRandomeQuotes(category === 'Random' ? '' : category.toLowerCase())}>Another</button>
         </div>
       }
     </div>
