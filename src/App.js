@@ -81,7 +81,10 @@ function App() {
             </div> : ''
           }
 
-<button className='button' onClick={() => getRandomeQuotes(category === 'Random' ? '' : category.toLowerCase())}>Another</button>
+        <button 
+          className='button' 
+          onClick={() => getRandomeQuotes(category === 'Random' ? '' : category.toLowerCase())}
+        >Another</button>
         </div>
       }
     </div>
